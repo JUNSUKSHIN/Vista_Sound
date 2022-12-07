@@ -41,7 +41,7 @@ for line in lines:
         fma_y = tma_y / cnt
         fma_z = tma_z / cnt
 
-        out.writelines(time_t + "/" + str(fca_x) + ", " + str(fca_y) + ", " + str(fca_z) + "/" + str(fma_x) + ", " + str(fma_y) + ", " + str(fma_z))
+        out.writelines(time_t + "/" + str(round(fca_x, 3)) + ", " + str(round(fca_y, 3)) + ", " + str(round(fca_z, 3)) + "/" + str(round(fma_x, 3)) + ", " + str(round(fma_y, 3)) + ", " + str(round(fma_z, 3)) + "\n")
 
         last_string = "-1"
 
