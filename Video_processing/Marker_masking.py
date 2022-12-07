@@ -1,5 +1,6 @@
 import cv2
 import glob
+import re
 import numpy as np
 
 img_path = "./merged_img"
@@ -16,10 +17,21 @@ for img in img_files:
     print(corners)
 
     point_1, point_2, point_3, point_4 = str(corners).split("],")
+
     x1, y1 = point_1.split(".,")
     x2, y2 = point_2.split(".,")
     x3, y3 = point_3.split(".,")
     x4, y4 = point_4.split(".,")
+
+    x1n = re.sub(r'[^0-9]', '', x1)
+    x2n = re.sub(r'[^0-9]', '', x2)
+    x3n = re.sub(r'[^0-9]', '', x3)
+    x4n = re.sub(r'[^0-9]', '', x4)
+    y1n = re.sub(r'[^0-9]', '', y1)
+    y2n = re.sub(r'[^0-9]', '', y2)
+    y3n = re.sub(r'[^0-9]', '', y3)
+    y4n = re.sub(r'[^0-9]', '', y4)
+
 
 
 
