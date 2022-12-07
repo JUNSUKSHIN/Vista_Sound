@@ -16,4 +16,12 @@ for line in lines:
     time_dn = re.sub(r'[^0-9]', '', time_d)
     time_hn = re.sub(r'[^0-9]', '', time_h)
 
+    time_m = time_dn + "_" + time_hn
+
+    for img in img_files:
+
+        if time_m == os.path.basename(img)[0:-4]:
+            
+
+
 
