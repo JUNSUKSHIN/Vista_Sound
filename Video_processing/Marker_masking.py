@@ -8,15 +8,15 @@ img_files = glob.glob(img_path + '/*')
 
 for img in img_files:
 
-    im = cv2.imread("20221208_001741.jpg")
+    img = cv2.imread("20221208_001741.jpg")
 
     arucoDict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
     arucoParams = cv2.aruco.DetectorParameters_create()
-    (corners, ids, rejected) = cv2.aruco.detectMarkers(im, arucoDict, parameters=arucoParams)
+    (corners, ids, rejected) = cv2.aruco.detectMarkers(img, arucoDict, parameters=arucoParams)
 
     print(corners)
 
-    point_1, point_2, point_3, point_4 = str(corners).split("],")
+    point_1, point_2, point_3, point_4, dummy = str(corners).split("],")
 
     x1, y1 = point_1.split(".,")
     x2, y2 = point_2.split(".,")
@@ -31,6 +31,12 @@ for img in img_files:
     y2n = re.sub(r'[^0-9]', '', y2)
     y3n = re.sub(r'[^0-9]', '', y3)
     y4n = re.sub(r'[^0-9]', '', y4)
+
+    dimensions = img.shape
+    img_height = dimensions[0]
+    img_width = dimensions[1]
+
+
 
 
 
