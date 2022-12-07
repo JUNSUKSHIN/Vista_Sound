@@ -37,3 +37,20 @@ for line in lines:
         fca_y = tca_y / cnt
         fca_z = tca_z / cnt
 
+        fma_x = tma_x / cnt
+        fma_y = tma_y / cnt
+        fma_z = tma_z / cnt
+
+        out.writelines(time_t + "/" + str(fca_x) + ", " + str(fca_y) + ", " + str(fca_z) + "/" + str(fma_x) + ", " + str(fma_y) + ", " + str(fma_z))
+
+        last_string = "-1"
+
+        tca_x, tca_y, tca_z = (0, 0, 0)
+        tma_x, tma_y, tma_z = (0, 0, 0)
+
+        cnt = 0
+
+f.close()
+out.close()
+
+
