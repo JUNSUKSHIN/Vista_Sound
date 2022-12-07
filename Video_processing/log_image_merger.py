@@ -38,7 +38,7 @@ for line in lines:
 
             distance = math.sqrt(fix_x ** 2 + fix_z ** 2)
 
-            destination = "./merged_img/" + str(round(distance, 2)) + "_" + os.path.basename(img)
+            destination = "./merged_img/"+ os.path.basename(img)[0:-4] + "_" + str(round(distance, 2)) + ".png"
             shutil.copyfile(img, destination)
 
 
