@@ -52,15 +52,22 @@ for img in img_files:
 
         print(i)
 
-    mask = np.zeros((img_width, img_height, 3), np.uint8)
+    mask = np.zeros((img_height, img_width, 3), np.uint8)
+    background = np.zeros((img_height, img_width, 3), np.uint8)
     #pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
     pt1 = np.array([[int(x1n), int(y1n)], [int(x2n), int(y2n)], [int(x3n), int(y3n)], [int(x4n), int(y4n)]], np.int32)
     mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
 
-    cv2.fillConvexPoly(img, np.array([(210, 200), (220, 300), (300, 340), (340, 220)]), (255, 0, 0))
+    cv2.fillConvexPoly(mask, np.array([p1, p2, p3, p4]), (255, 255, 255))
+    cv2.copyTo(img, mask, background)
 
-    cv2.imshow('rgb_image', img)
-    cv2.imshow('rgb_image2', mask)
+    resize_img = cv2.resize(background, (0, 0), fx=0.15, fy=0.15, interpolation=cv2.INTER_AREA)
+    resize_img1 = cv2.resize(mask, (0, 0), fx=0.15, fy=0.15, interpolation=cv2.INTER_AREA)
+    resize_img2 = cv2.resize(img, (0, 0), fx=0.15, fy=0.15, interpolation=cv2.INTER_AREA)
+
+    cv2.imshow('rgb_image', resize_img)
+    cv2.imshow('rgb_image1', resize_img1)
+    cv2.imshow('rgb_image2', resize_img2)
     cv2.waitKey(0)
 
 
