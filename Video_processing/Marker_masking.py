@@ -36,29 +36,31 @@ for img in img_files:
     img_height = dimensions[0]
     img_width = dimensions[1]
 
-    sum_x = int(x1) + int(x2) + int(x3) + int(x4)
+    sum_x = int(x1n) + int(x2n) + int(x3n) + int(x4n)
     x_avg = int(sum_x / 4)
-    sum_y = int(y1) + int(y2) + int(y3) + int(y4)
+    sum_y = int(y1n) + int(y2n) + int(y3n) + int(y4n)
     y_avg = int(sum_y / 4)
 
-    p1 = list[int(x1), int(y1)]
-    p2 = list[int(x2), int(y2)]
-    p3 = list[int(x3), int(y3)]
-    p4 = list[int(x4), int(y4)]
+    p1 = [int(x1n), int(y1n)]
+    p2 = [int(x2n), int(y2n)]
+    p3 = [int(x3n), int(y3n)]
+    p4 = [int(x4n), int(y4n)]
 
-    points = list[p1, p2, p3, p4]
+    points = [p1, p2, p3, p4]
 
-    for p in points:
+    for i in points:
 
-        print(p)
+        print(i)
 
     mask = np.zeros((img_width, img_height, 3), np.uint8)
-    pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
+    #pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
+    pt1 = np.array([[int(x1n), int(y1n)], [int(x2n), int(y2n)], [int(x3n), int(y3n)], [int(x4n), int(y4n)]], np.int32)
     mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
 
     cv2.fillConvexPoly(img, np.array([(210, 200), (220, 300), (300, 340), (340, 220)]), (255, 0, 0))
 
     cv2.imshow('rgb_image', img)
+    cv2.imshow('rgb_image2', mask)
     cv2.waitKey(0)
 
 
