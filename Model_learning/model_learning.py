@@ -1,6 +1,8 @@
 import torch
 import os
 from torchvision import datasets, models, transforms
+import numpy as np
+import matplotlib.pyplot as plt
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -28,3 +30,13 @@ print('테스트 데이터셋 크기:', len(test_datasets))
 class_names = train_datasets.classes
 print('클래스:', class_names)
 
+def imshow(input, title):
+
+    input = input.numpy().transpose((1, 2, 0))
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+    input = std * input + mean
+    input = np.clip(input, 0, 1)
+    plt.imshow(input)
+    plt.title(title)
+    plt.show()
