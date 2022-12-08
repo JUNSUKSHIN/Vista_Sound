@@ -2,9 +2,11 @@ import torch
 import torch.nn as nn
 import os
 from torchvision import datasets, models, transforms
+import torch.optim as optim
 import numpy as np
 import torchvision
 import matplotlib.pyplot as plt
+import time
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -54,3 +56,6 @@ model = models.resnet34(pretrained=True)
 num_features = model.fc.in_features
 model.fc = nn.Linear(num_features, 8)
 model = model.to(device)
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
