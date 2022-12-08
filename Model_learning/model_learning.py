@@ -63,3 +63,12 @@ optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 num_epochs = 50
 model.train()
 start_time = time.time()
+
+if __name__ == '__main__':
+    for epoch in range(num_epochs):
+        running_loss = 0.
+        running_corrects = 0
+
+        for inputs, labels in train_dataloader:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
