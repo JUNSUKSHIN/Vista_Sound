@@ -72,3 +72,11 @@ if __name__ == '__main__':
         for inputs, labels in train_dataloader:
             inputs = inputs.to(device)
             labels = labels.to(device)
+
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            _, preds = torch.max(outputs, 1)
+            loss = criterion(outputs, labels)
+
+            loss.backward()
+            optimizer.step()
