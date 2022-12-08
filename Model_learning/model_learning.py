@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 import os
 from torchvision import datasets, models, transforms
 import numpy as np
@@ -48,4 +49,8 @@ if __name__ == '__main__':
     inputs, classes = next(iterator)
     out = torchvision.utils.make_grid(inputs)
     imshow(out, title=[class_names[x] for x in classes])
-    
+
+model = models.resnet34(pretrained=True)
+num_features = model.fc.in_features
+model.fc = nn.Linear(num_features, 8)
+model = model.to(device)
