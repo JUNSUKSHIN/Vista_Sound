@@ -59,3 +59,7 @@ model = model.to(device)
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+
+num_epochs = 50
+model.train()
+start_time = time.time()
