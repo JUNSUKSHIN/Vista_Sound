@@ -2,6 +2,7 @@ import torch
 import os
 from torchvision import datasets, models, transforms
 import numpy as np
+import torchvision
 import matplotlib.pyplot as plt
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -40,3 +41,11 @@ def imshow(input, title):
     plt.imshow(input)
     plt.title(title)
     plt.show()
+
+if __name__ == '__main__':
+    iterator = iter(train_dataloader)
+
+    inputs, classes = next(iterator)
+    out = torchvision.utils.make_grid(inputs)
+    imshow(out, title=[class_names[x] for x in classes])
+    
