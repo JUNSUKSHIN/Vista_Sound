@@ -36,19 +36,21 @@ for img in img_files:
     img_height = dimensions[0]
     img_width = dimensions[1]
 
-    sum_x = x1 + x2 + x3 + x4
+    sum_x = int(x1) + int(x2) + int(x3) + int(x4)
     x_avg = int(sum_x / 4)
-    sum_y = y1 + y2 + y3 + y4
+    sum_y = int(y1) + int(y2) + int(y3) + int(y4)
     y_avg = int(sum_y / 4)
 
-    p1 = list[x1, y1]
-    p2 = list[x2, y2]
-    p3 = list[x3, y3]
-    p4 = list[x4, y4]
+    p1 = list[int(x1), int(y1)]
+    p2 = list[int(x2), int(y2)]
+    p3 = list[int(x3), int(y3)]
+    p4 = list[int(x4), int(y4)]
 
     points = list[p1, p2, p3, p4]
 
-        
+    for p in points:
+
+        print(p)
 
     mask = np.zeros((img_width, img_height, 3), np.uint8)
     pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
