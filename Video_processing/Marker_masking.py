@@ -41,6 +41,15 @@ for img in img_files:
     sum_y = y1 + y2 + y3 + y4
     y_avg = int(sum_y / 4)
 
+    p1 = list[x1, y1]
+    p2 = list[x2, y2]
+    p3 = list[x3, y3]
+    p4 = list[x4, y4]
+
+    points = list[p1, p2, p3, p4]
+
+        
+
     mask = np.zeros((img_width, img_height, 3), np.uint8)
     pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
     mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
