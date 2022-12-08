@@ -2,13 +2,15 @@ import cv2
 import glob
 import re
 import numpy as np
+import os
 
 img_path = "./merged_img"
+masked_path = "./masked_img/"
 img_files = glob.glob(img_path + '/*')
 
-for img in img_files:
+for img_path in img_files:
 
-    img = cv2.imread("20221208_001741.jpg")
+    img = cv2.imread(img_path)
 
     arucoDict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
     arucoParams = cv2.aruco.DetectorParameters_create()
@@ -65,10 +67,15 @@ for img in img_files:
     resize_img1 = cv2.resize(mask, (0, 0), fx=0.15, fy=0.15, interpolation=cv2.INTER_AREA)
     resize_img2 = cv2.resize(img, (0, 0), fx=0.15, fy=0.15, interpolation=cv2.INTER_AREA)
 
-    cv2.imshow('rgb_image', resize_img)
-    cv2.imshow('rgb_image1', resize_img1)
-    cv2.imshow('rgb_image2', resize_img2)
-    cv2.waitKey(0)
+    #cv2.imshow('rgb_image', resize_img)
+    #cv2.imshow('rgb_image1', resize_img1)
+    #cv2.imshow('rgb_image2', resize_img2)
+    #cv2.waitKey(0)
+
+    cv2.imwrite(masked_path + os.path.basename(img_path), img)
+
+
+
 
 
 
