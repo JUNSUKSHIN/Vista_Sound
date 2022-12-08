@@ -80,3 +80,11 @@ if __name__ == '__main__':
 
             loss.backward()
             optimizer.step()
+
+            running_loss += loss.item() * inputs.size(0)
+            running_corrects += torch.sum(preds == labels.data)
+
+        epoch_loss = running_loss / len(train_datasets)
+        epoch_acc = running_corrects / len(train_datasets) * 100.
+
+        print('#{} Loss: {:.4f} Acc: {:.4f}% Time: {:.4f}s'.format(epoch, epoch_loss, epoch_acc, time.time() - start_time))
