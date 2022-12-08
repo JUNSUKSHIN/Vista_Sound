@@ -36,6 +36,15 @@ for img in img_files:
     img_height = dimensions[0]
     img_width = dimensions[1]
 
+    mask = np.zeros((img_width, img_height, 3), np.uint8)
+    pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
+    mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
+
+    cv2.fillConvexPoly(img, np.array([(210, 200), (220, 300), (300, 340), (340, 220)]), (255, 0, 0))
+
+    cv2.imshow('rgb_image', img)
+    cv2.waitKey(0)
+
 
 
 
