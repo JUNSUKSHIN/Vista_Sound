@@ -22,3 +22,9 @@ test_datasets = datasets.ImageFolder(os.path.join(data_dir, 'test'), transforms_
 
 train_dataloader = torch.utils.data.DataLoader(train_datasets, batch_size=10, shuffle=True, num_workers=4)
 test_dataloader = torch.utils.data.DataLoader(test_datasets, batch_size=10, shuffle=True, num_workers=4)
+
+print('학습 데이터셋 크기:', len(train_datasets))
+print('테스트 데이터셋 크기:', len(test_datasets))
+class_names = train_datasets.classes
+print('클래스:', class_names)
+
