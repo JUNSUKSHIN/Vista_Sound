@@ -88,3 +88,13 @@ if __name__ == '__main__':
         epoch_acc = running_corrects / len(train_datasets) * 100.
 
         print('#{} Loss: {:.4f} Acc: {:.4f}% Time: {:.4f}s'.format(epoch, epoch_loss, epoch_acc, time.time() - start_time))
+
+        if (epoch == 7):
+            PATH = './weights/'
+
+            torch.save(model, PATH + 'model.pt')
+            torch.save(model.state_dict(), PATH + 'model_state_dict.pt')
+            torch.save({
+                'model': model.state_dict(),
+                'optimizer': optimizer.state_dict()
+            }, PATH + 'all.tar')
