@@ -1,5 +1,7 @@
 # Vista_Sound
 
+마커를 사용하여 사용자의 위치와 방향을 알려주는 모델 및 응용 어플리케이션 
+
 # 설치 방법
 
 ## 유니티 프로젝트 설치 방법
@@ -18,3 +20,9 @@
 
 ## 데이터 전처리 블록 설치 방법
 
+1. Vista_sound 리포리토리를 다운로드 하거나 clone하여 로컬 저장소에 저장합니다.
+2. [FFmpeg](https://ffmpeg.org/download.html)를 다운로드 하여 `Video_processing`폴더에 압축을 풀어줍니다.
+3. 아래의 코드를 실행하여 opencv-contrib를 설치합니다.
+```
+pip install opencv-contrib-python
+```
