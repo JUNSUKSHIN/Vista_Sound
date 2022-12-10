@@ -26,3 +26,13 @@
 ```
 pip install opencv-contrib-python
 ```
+# 의존성
+
+ - Python > 3.10
+ - Unity > 2021.3.15f
+ - SteamVR > 1.25.1 
+ - FFmpeg > 
+ - XR Interaction Toolkit Examples > 2.02
+ - PyTorch > 1.21.1
+   - torchvision > 0.13.1
+ - matplotlib > 3.5.2
