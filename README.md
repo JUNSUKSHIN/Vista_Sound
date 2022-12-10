@@ -36,3 +36,14 @@ pip install opencv-contrib-python
  - PyTorch > 1.21.1
    - torchvision > 0.13.1
  - matplotlib > 3.5.2
+
+# 라이센스
+
+```
+Vista_Sound © 2019 Unity Technologies
+
+Licensed under the Unity Companion License for Unity-dependent projects (see Unity Companion License).
+
+Unless expressly provided otherwise, the Software under this license is made available strictly on an “AS IS” BASIS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. Please review the license for details on these and other terms and conditions.
+```
+
