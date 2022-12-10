@@ -17,30 +17,26 @@ for img in img_files:
         destination = img2_path + "0.5/" + os.path.basename(img)
         shutil.copyfile(img, destination)
 
-    elif distance <= 0.75:
-        destination = img2_path + "0.75/" + os.path.basename(img)
-        shutil.copyfile(img, destination)
-
     elif distance <= 1:
         destination = img2_path + "1/" + os.path.basename(img)
-        shutil.copyfile(img, destination)
-
-    elif distance <= 1.25:
-        destination = img2_path + "1.25/" + os.path.basename(img)
         shutil.copyfile(img, destination)
 
     elif distance <= 1.5:
         destination = img2_path + "1.5/" + os.path.basename(img)
         shutil.copyfile(img, destination)
 
-    elif distance <= 1.75:
-        destination = img2_path + "1.75/" + os.path.basename(img)
-        shutil.copyfile(img, destination)
-
     elif distance <= 2:
         destination = img2_path + "2/" + os.path.basename(img)
         shutil.copyfile(img, destination)
 
+    elif distance <= 2.5:
+        destination = img2_path + "2.5/" + os.path.basename(img)
+        shutil.copyfile(img, destination)
+
+    elif distance <= 3:
+        destination = img2_path + "3/" + os.path.basename(img)
+        shutil.copyfile(img, destination)
+
     else:
-        destination = img2_path + "2_over/" + os.path.basename(img)
+        destination = img2_path + "3_over/" + os.path.basename(img)
         shutil.copyfile(img, destination)
