@@ -60,3 +60,20 @@ def imshow(input, title):
     plt.imshow(input)
     plt.title(title)
     plt.show()
+
+if __name__ == '__main__':
+    with torch.no_grad():
+        running_loss = 0.
+        running_corrects = 0
+
+        for inputs, labels in test_dataloader:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+
+            outputs = model(inputs)
+            print(outputs)
+            _, preds = torch.max(outputs, 1)
+            loss = criterion(outputs, labels)
+
+            running_loss += loss.item() * inputs.size(0)
+            running_corrects += torch.sum(preds == labels.data)
