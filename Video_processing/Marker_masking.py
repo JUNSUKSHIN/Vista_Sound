@@ -68,11 +68,21 @@ for img_path in img_files:
 
                 i[0] = i[0] - margin
 
+            if i[1] > y_avg:
+
+                i[1] = i[1] - margin
+
+            else:
+
+                i[1] = i[1] + margin
+
+
+
 
         mask = np.zeros((img_height, img_width, 3), np.uint8)
         background = np.zeros((img_height, img_width, 3), np.uint8)
         #pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
-        pt1 = np.array([[int(x1n), int(y1n)], [int(x2n), int(y2n)], [int(x3n), int(y3n)], [int(x4n), int(y4n)]], np.int32)
+        pt1 = np.array(p1, p2, p3, p4, np.int32)
         mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
 
         cv2.fillConvexPoly(mask, np.array([p1, p2, p3, p4]), (255, 255, 255))
