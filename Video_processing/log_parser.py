@@ -10,7 +10,7 @@ tca_x, tca_y, tca_z = (0, 0, 0)
 tma_x, tma_y, tma_z = (0, 0, 0)
 
 cnt = 0
-
+loops = 0
 
 for line in lines:
     time_t, camera, marker = line.split("/")
@@ -41,14 +41,27 @@ for line in lines:
         fma_y = tma_y / cnt
         fma_z = tma_z / cnt
 
-        out.writelines(time_t + "/" + str(round(fca_x, 3)) + ", " + str(round(fca_y, 3)) + ", " + str(round(fca_z, 3)) + "/" + str(round(fma_x, 3)) + ", " + str(round(fma_y, 3)) + ", " + str(round(fma_z, 3)) + "\n")
+        if cnt > 3:
+            out.writelines(time_t + str(loops) + "/" + str(round(fca_x, 3)) + ", " + str(round(fca_y, 3)) + ", " + str(
+                round(fca_z, 3)) + "/" + str(round(fma_x, 3)) + ", " + str(round(fma_y, 3)) + ", " + str(
+                round(fma_z, 3)) + "\n")
 
-        last_string = "-1"
+            last_string = "-1"
 
-        tca_x, tca_y, tca_z = (0, 0, 0)
-        tma_x, tma_y, tma_z = (0, 0, 0)
+            tca_x, tca_y, tca_z = (0, 0, 0)
+            tma_x, tma_y, tma_z = (0, 0, 0)
 
-        cnt = 0
+            cnt = 0
+            loops = 0
+
+        else:
+
+            tca_x, tca_y, tca_z = (0, 0, 0)
+            tma_x, tma_y, tma_z = (0, 0, 0)
+
+            loops = loops + 1
+
+
 
 f.close()
 out.close()
