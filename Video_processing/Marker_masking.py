@@ -12,6 +12,8 @@ for img_path in img_files:
 
     img = cv2.imread(img_path)
 
+    color = map(int, input().split("/"))
+
     arucoDict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
     arucoParams = cv2.aruco.DetectorParameters_create()
     (corners, ids, rejected) = cv2.aruco.detectMarkers(img, arucoDict, parameters=arucoParams)
@@ -83,7 +85,12 @@ for img_path in img_files:
         background = np.zeros((img_height, img_width, 3), np.uint8)
         #pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
         pt1 = np.array(p1, p2, p3, p4, np.int32)
-        mask = cv2.fillConvexPoly(mask, pt1, (255,255,255))
+
+        red = color[0]
+        green = color[1]
+        blue = color[2]
+        
+        mask = cv2.fillConvexPoly(mask, pt1, (red,green,blue))
 
         cv2.fillConvexPoly(mask, np.array([p1, p2, p3, p4]), (255, 255, 255))
         cv2.copyTo(img, mask, background)
