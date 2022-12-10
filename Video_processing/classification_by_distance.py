@@ -16,3 +16,15 @@ for img in img_files:
     if distance <= 0.5:
         destination = img2_path + "0.5/" + os.path.basename(img)
         shutil.copyfile(img, destination)
+
+    if distance <= 0.75:
+        destination = img2_path + "0.75/" + os.path.basename(img)
+        shutil.copyfile(img, destination)
+
+    if distance <= 1:
+        destination = img2_path + "1/" + os.path.basename(img)
+        shutil.copyfile(img, destination)
+
+    if distance <= 1.25:
+        destination = img2_path + "0.75/" + os.path.basename(img)
+        shutil.copyfile(img, destination)
