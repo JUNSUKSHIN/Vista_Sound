@@ -15,6 +15,8 @@ for line in lines:
     time_t, camera, marker = line.split("/")
     time_d, time_h = time_t.split(" ")
 
+    time_t, loops = time_t[0,-1],time_t[-2,-1]
+
     time_dn = re.sub(r'[^0-9]', '', time_d)
     time_hn = re.sub(r'[^0-9]', '', time_h)
 
@@ -29,16 +31,20 @@ for line in lines:
 
             #print(os.path.basename(img)[0:-4])
 
-            ca_x, ca_y, ca_z = map(float, camera.split(", "))
-            ma_x, ma_y, ma_z = map(float, marker.split(", "))
+            for i in range(3):
 
-            fix_x = ca_x - ma_x
-            fix_y = ca_y - ma_y
-            fix_z = ca_z - ma_z
+                if (os.path.basename(img)[9:10] == i):
 
-            distance = math.sqrt(fix_x ** 2 + fix_z ** 2)
+                    ca_x, ca_y, ca_z = map(float, camera.split(", "))
+                    ma_x, ma_y, ma_z = map(float, marker.split(", "))
 
-            destination = "./merged_img/"+ os.path.basename(img)[0:-4] + "_" + str(round(distance, 2)) + ".png"
-            shutil.copyfile(img, destination)
+                    fix_x = ca_x - ma_x
+                    fix_y = ca_y - ma_y
+                    fix_z = ca_z - ma_z
+
+                    distance = math.sqrt(fix_x ** 2 + fix_z ** 2)
+
+                    destination = "./merged_img/"+ os.path.basename(img)[0:-4] + "_" + str(round(distance, 2)) + loops + ".png"
+                    shutil.copyfile(img, destination)
 
 
