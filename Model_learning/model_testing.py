@@ -21,3 +21,16 @@ model.load_state_dict(torch.load(PATH + 'model_state_dict.pt', map_location=torc
 checkpoint = torch.load(PATH + 'all.tar', map_location=torch.device('cpu'))
 model.load_state_dict(checkpoint['model'])
 criterion = nn.CrossEntropyLoss()
+
+
+transforms_train = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+])
+
+transforms_test = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+])
