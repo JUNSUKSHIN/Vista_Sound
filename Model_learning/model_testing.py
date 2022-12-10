@@ -77,3 +77,22 @@ if __name__ == '__main__':
 
             running_loss += loss.item() * inputs.size(0)
             running_corrects += torch.sum(preds == labels.data)
+
+            print(f'[예측 결과: {class_names[preds[0]]}] (실제 정답: {class_names[labels.data[0]]})')
+
+            numpy_arr = outputs.cpu().numpy()
+
+            print("0.5 : " + np.array2string(numpy_arr[0][0]))
+            print("0.75 : " + np.array2string(numpy_arr[0][1]))
+            print("1 : " + np.array2string(numpy_arr[0][2]))
+            print("1.25 : " + np.array2string(numpy_arr[0][3]))
+            print("1.5 : " + np.array2string(numpy_arr[0][4]))
+            print("1.75 : " + np.array2string(numpy_arr[0][5]))
+            print("2 : " + np.array2string(numpy_arr[0][6]))
+            print("2_over : " + np.array2string(numpy_arr[0][7]))
+
+            imshow(inputs.cpu().data[0], class_names[preds[0]])
+
+        epoch_loss = running_loss / len(test_datasets)
+        epoch_acc = running_corrects / len(test_datasets) * 100.
+        print('[Test Phase] Loss: {:.4f} Acc: {:.4f}% Time: {:.4f}s'.format(epoch_loss, epoch_acc, time.time() - start_time))
