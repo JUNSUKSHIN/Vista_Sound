@@ -56,6 +56,19 @@ for img_path in img_files:
 
             print(i)
 
+        margin = int(input())
+
+        for i in points:
+
+            if i[0] > x_avg:
+
+                i[0] = i[0] + margin
+
+            else:
+
+                i[0] = i[0] - margin
+
+
         mask = np.zeros((img_height, img_width, 3), np.uint8)
         background = np.zeros((img_height, img_width, 3), np.uint8)
         #pt1 = np.array([[x1n, y1n], [x2n, y2n], [x3n, y3n], [x4n, y4n]], np.int32)
