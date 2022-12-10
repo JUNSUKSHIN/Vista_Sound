@@ -49,3 +49,14 @@ class_names = train_datasets.classes
 
 model.eval()
 start_time = time.time()
+
+def imshow(input, title):
+
+    input = input.numpy().transpose((1, 2, 0))
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+    input = std * input + mean
+    input = np.clip(input, 0, 1)
+    plt.imshow(input)
+    plt.title(title)
+    plt.show()
